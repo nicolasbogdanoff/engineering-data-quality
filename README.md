@@ -2,6 +2,8 @@
 
 A small, testable Python toolkit for profiling and validating subgrouped engineering data before statistical process control (SPC) analysis.
 
+[![Tests](https://github.com/nicolasbogdanoff/engineering-data-quality/actions/workflows/tests.yml/badge.svg)](https://github.com/nicolasbogdanoff/engineering-data-quality/actions/workflows/tests.yml)
+
 The project is intentionally narrow: it helps identify structural data problems early, without silently repairing measurements or deciding which observations should be excluded from a control chart.
 
 ## Features
@@ -22,13 +24,19 @@ python -m venv .venv
 source .venv/bin/activate
 
 # Windows PowerShell
-.venv\Scripts\Activate.ps1
+.venv\\Scripts\\Activate.ps1
 
 pip install -e ".[dev]"
 pytest
 ~~~
 
 ## Example
+
+~~~bash
+python examples/basic_profile.py
+~~~
+
+The example uses the public API:
 
 ~~~python
 import pandas as pd
@@ -78,6 +86,10 @@ This toolkit is a companion project for [SPC Connect](https://github.com/nicolas
 | engineering_data_quality/quality.py | Validation and profiling functions |
 | engineering_data_quality/__init__.py | Public package interface |
 | tests/test_quality.py | Unit tests |
+| examples/basic_profile.py | Runnable example |
+| .github/workflows/tests.yml | Continuous integration |
+| CITATION.cff | Citation metadata |
+| LICENSE | MIT license |
 | pyproject.toml | Package metadata and dependencies |
 
 ## Scope and limitations
@@ -88,3 +100,11 @@ This is a data-readiness utility, not a quality-management system. It does not e
 
 Nicolás Mauricio Bogdanoff  
 ORCID: https://orcid.org/0009-0004-6275-3013
+
+## Citation
+
+If this software contributes to a technical report, class activity, research note, or publication, cite it using [CITATION.cff](CITATION.cff).
+
+## License
+
+This project is released under the [MIT License](LICENSE).
