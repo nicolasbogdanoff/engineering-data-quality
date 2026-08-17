@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from typing import Sequence
+from pathlib import Path
+from typing import Any, Sequence
 
 import pandas as pd
 from pandas.api.types import is_numeric_dtype
@@ -155,3 +156,19 @@ def profile_frame(
         "issues": [issue.as_dict() for issue in issues],
         "measurement_summary": summary.to_dict(orient="records"),
     }
+
+
+def profile_csv(
+    path: str | Path,
+    subgroup_column: str,
+    measurement_columns: Sequence[str] | None = None,
+    **read_csv_kwargs: Any,
+) -> dict[str, object]:
+    """Read a CSV file and return the same structured profile as profile_frame."""
+
+    frame = pd.read_csv(path, **read_csv_kwargs)
+    return profile_frame(
+        frame,
+        subgroup_column=subgroup_column,
+        measurement_columns=measurement_columns,
+    )
