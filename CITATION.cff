@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Engineering Data Quality: Validation Utilities for Subgrouped Data"
+type: software
+authors:
+  - family-names: Bogdanoff
+    given-names: Nicolás Mauricio
+    orcid: https://orcid.org/0009-0004-6275-3013
+abstract: >
+  A small, non-destructive Python toolkit for profiling and validating
+  subgrouped engineering data before statistical process control analysis.
+keywords:
+  - data quality
+  - quality engineering
+  - statistical process control
+  - engineering data
+  - pandas
+repository-code: https://github.com/nicolasbogdanoff/engineering-data-quality
+url: https://github.com/nicolasbogdanoff/engineering-data-quality
+license: MIT
