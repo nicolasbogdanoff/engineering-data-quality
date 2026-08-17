@@ -1,7 +1,11 @@
 import pandas as pd
 import pytest
 
-from engineering_data_quality import profile_frame, validate_subgroups
+from engineering_data_quality import (
+    profile_csv,
+    profile_frame,
+    validate_subgroups,
+)
 
 
 def valid_frame() -> pd.DataFrame:
@@ -57,3 +61,14 @@ def test_missing_and_non_numeric_measurements_are_reported() -> None:
 def test_missing_subgroup_column_raises_when_profiling() -> None:
     with pytest.raises(ValueError, match="subgroup column"):
         profile_frame(pd.DataFrame({"x1": [1.0]}), "Subgroup")
+
+
+def test_profile_csv_reads_and_profiles_a_file(tmp_path) -> None:
+    path = tmp_path / "measurements.csv"
+    valid_frame().to_csv(path, index=False)
+
+    profile = profile_csv(path, subgroup_column="Subgroup")
+
+    assert profile["row_count"] == 3
+    assert profile["measurement_count"] == 2
+    assert profile["issues"] == []
