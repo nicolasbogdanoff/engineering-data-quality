@@ -14,6 +14,7 @@ The project is intentionally narrow: it helps identify structural data problems 
 - Preserves the original data and returns explicit validation issues.
 - Provides a simple foundation for CSV/Excel ingestion pipelines and SPC workflows.
 - Includes unit tests for valid data and common quality failures.
+- Profiles CSV files through the same non-destructive validation API.
 
 ## Quick start
 
@@ -34,6 +35,7 @@ pytest
 
 ~~~bash
 python examples/basic_profile.py
+python examples/profile_csv.py
 ~~~
 
 The example uses the public API:
@@ -86,7 +88,9 @@ This toolkit is a companion project for [SPC Connect](https://github.com/nicolas
 | engineering_data_quality/quality.py | Validation and profiling functions |
 | engineering_data_quality/__init__.py | Public package interface |
 | tests/test_quality.py | Unit tests |
-| examples/basic_profile.py | Runnable example |
+| examples/basic_profile.py | Runnable DataFrame example |
+| examples/profile_csv.py | Runnable CSV profiling example |
+| examples/sample_engineering_data.csv | Reproducible CSV fixture |
 | .github/workflows/tests.yml | Continuous integration |
 | CITATION.cff | Citation metadata |
 | LICENSE | MIT license |
